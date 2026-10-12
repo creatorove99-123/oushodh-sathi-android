@@ -58,15 +58,17 @@ public final class MainActivity extends Activity {
     private static final int GOLD = Color.rgb(213, 166, 41);
     private static final int PAGE = Color.rgb(247, 248, 244);
     private static final int CARD = Color.WHITE;
+    private static final int NAV_FOREST = Color.rgb(31, 48, 40);
 
     private LinearLayout root;
     private LinearLayout content;
+    private LinearLayout bottomNav;
     private String activeTab = "home";
 
     @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setStatusBarColor(PAGE);
-        getWindow().setNavigationBarColor(CARD);
+        getWindow().setNavigationBarColor(PAGE);
         if (Build.VERSION.SDK_INT >= 26) getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR | View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR);
         AlarmScheduler.createChannel(this);
         buildShell();
@@ -84,7 +86,8 @@ public final class MainActivity extends Activity {
     private void buildShell() {
         root = new LinearLayout(this);
         root.setOrientation(LinearLayout.VERTICAL);
-        root.setBackgroundColor(PAGE);
+        root.setBackground(new GradientDrawable(GradientDrawable.Orientation.TL_BR,
+                new int[]{Color.rgb(255, 251, 238), PAGE, Color.rgb(238, 246, 239)}));
 
         LinearLayout header = new LinearLayout(this);
         header.setGravity(Gravity.CENTER_VERTICAL);
@@ -101,10 +104,6 @@ public final class MainActivity extends Activity {
         brand.addView(title);
         brand.addView(subtitle);
         header.addView(brand, new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1));
-        Button add = button("＋", GOLD, INK);
-        add.setContentDescription("নতুন ওষুধ যোগ করুন");
-        add.setOnClickListener(v -> showMedicineDialog(null));
-        header.addView(add, new LinearLayout.LayoutParams(dp(48), dp(44)));
         root.addView(header, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, dp(66)));
 
         ScrollView scroll = new ScrollView(this);
@@ -115,25 +114,95 @@ public final class MainActivity extends Activity {
         scroll.addView(content);
         root.addView(scroll, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 0, 1));
 
-        LinearLayout nav = new LinearLayout(this);
-        nav.setGravity(Gravity.CENTER);
-        nav.setBackgroundColor(CARD);
-        nav.setPadding(dp(5), dp(7), dp(5), dp(7));
-        String[][] tabs = {{"home", "⌂\nহোম"}, {"medicines", "▱\nওষুধ"}, {"history", "◷\nইতিহাস"}, {"settings", "⚙\nসেটিংস"}};
-        for (String[] tab : tabs) {
-            Button b = button(tab[1], CARD, GREEN);
-            b.setTextSize(TypedValue.COMPLEX_UNIT_SP, 11);
-            b.setMinHeight(dp(50));
-            b.setPadding(dp(3), 0, dp(3), 0);
-            b.setOnClickListener(v -> showTab(tab[0]));
-            nav.addView(b, new LinearLayout.LayoutParams(0, dp(52), 1));
-        }
-        root.addView(nav, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, dp(66)));
+        LinearLayout navHost = new LinearLayout(this);
+        navHost.setGravity(Gravity.CENTER);
+        navHost.setPadding(dp(12), dp(3), dp(12), dp(7));
+        navHost.setBackgroundColor(PAGE);
+        bottomNav = new LinearLayout(this);
+        bottomNav.setOrientation(LinearLayout.HORIZONTAL);
+        bottomNav.setGravity(Gravity.CENTER);
+        bottomNav.setPadding(dp(6), dp(5), dp(6), dp(5));
+        bottomNav.setBackground(round(NAV_FOREST, dp(40), Color.rgb(54, 70, 60)));
+        addNavItem("home", "হোম", R.drawable.ic_nav_home);
+        addNavItem("medicines", "ওষুধ", R.drawable.ic_nav_pill);
+
+        LinearLayout addAction = new LinearLayout(this);
+        addAction.setOrientation(LinearLayout.VERTICAL);
+        addAction.setGravity(Gravity.CENTER);
+        addAction.setFocusable(true);
+        addAction.setClickable(true);
+        addAction.setTag("add");
+        addAction.setContentDescription("নতুন ওষুধ যোগ করুন");
+        TextView plus = text("＋", 25, INK, true);
+        plus.setGravity(Gravity.CENTER);
+        plus.setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO);
+        GradientDrawable orb = new GradientDrawable();
+        orb.setShape(GradientDrawable.OVAL);
+        orb.setColor(GOLD);
+        orb.setStroke(dp(2), Color.rgb(255, 249, 226));
+        plus.setBackground(orb);
+        addAction.addView(plus, new LinearLayout.LayoutParams(dp(40), dp(40)));
+        TextView addLabel = text("যোগ", 10, Color.WHITE, true);
+        addLabel.setGravity(Gravity.CENTER);
+        addLabel.setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO);
+        addAction.addView(addLabel, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+        addAction.setOnClickListener(v -> showMedicineDialog(null));
+        bottomNav.addView(addAction, new LinearLayout.LayoutParams(0, dp(58), 1));
+
+        addNavItem("history", "ইতিহাস", R.drawable.ic_nav_history);
+        addNavItem("settings", "সেটিংস", R.drawable.ic_nav_settings);
+        navHost.addView(bottomNav, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, dp(66)));
+        root.addView(navHost, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, dp(78)));
         setContentView(root);
+    }
+
+    private void addNavItem(String key, String label, int iconResource) {
+        LinearLayout item = new LinearLayout(this);
+        item.setOrientation(LinearLayout.VERTICAL);
+        item.setGravity(Gravity.CENTER);
+        item.setPadding(dp(2), dp(2), dp(2), dp(2));
+        item.setTag(key);
+        item.setFocusable(true);
+        ImageView icon = new ImageView(this);
+        icon.setImageResource(iconResource);
+        icon.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+        icon.setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO);
+        item.addView(icon, new LinearLayout.LayoutParams(dp(21), dp(21)));
+        TextView title = text(label, 10, Color.rgb(220, 229, 221), true);
+        title.setGravity(Gravity.CENTER);
+        title.setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO);
+        item.addView(title, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+        item.setOnClickListener(v -> showTab(key));
+        bottomNav.addView(item, new LinearLayout.LayoutParams(0, dp(58), 1));
+    }
+
+    private void updateBottomNav() {
+        if (bottomNav == null) return;
+        for (int i = 0; i < bottomNav.getChildCount(); i++) {
+            View child = bottomNav.getChildAt(i);
+            Object tag = child.getTag();
+            if (!(child instanceof LinearLayout) || !(tag instanceof String) || "add".equals(tag)) continue;
+            String key = (String) tag;
+            boolean selected = activeTab.equals(key);
+            GradientDrawable background = new GradientDrawable();
+            background.setColor(NAV_FOREST);
+            background.setCornerRadius(dp(25));
+            background.setStroke(dp(1), selected ? GOLD : NAV_FOREST);
+            child.setBackground(background);
+            child.setSelected(selected);
+            ImageView icon = (ImageView) ((LinearLayout) child).getChildAt(0);
+            TextView title = (TextView) ((LinearLayout) child).getChildAt(1);
+            int tint = selected ? Color.rgb(255, 220, 121) : Color.rgb(220, 229, 221);
+            icon.setColorFilter(tint);
+            title.setTextColor(tint);
+            String label = "home".equals(key) ? "হোম" : "medicines".equals(key) ? "ওষুধ" : "history".equals(key) ? "ইতিহাস" : "সেটিংস";
+            child.setContentDescription(label + (selected ? ", বর্তমান পৃষ্ঠা" : ""));
+        }
     }
 
     private void showTab(String tab) {
         activeTab = tab;
+        updateBottomNav();
         if (content == null) return;
         content.removeAllViews();
         if ("medicines".equals(tab)) renderMedicines();
@@ -162,7 +231,11 @@ public final class MainActivity extends Activity {
         }
 
         LinearLayout hero = card();
-        hero.setBackground(round(Color.rgb(255, 244, 208), dp(22), Color.rgb(250, 224, 156)));
+        GradientDrawable heroSurface = new GradientDrawable(GradientDrawable.Orientation.TL_BR,
+                new int[]{Color.rgb(255, 246, 217), Color.rgb(233, 246, 231)});
+        heroSurface.setCornerRadius(dp(22));
+        heroSurface.setStroke(dp(1), Color.rgb(248, 227, 178));
+        hero.setBackground(heroSurface);
         addText(hero, "আপনার সুস্থতার সঙ্গী", 12, Color.rgb(127, 94, 15), true, 0, 0, 0, 6);
         addText(hero, "এক ধাপ করে\nভালো থাকার পথে", 23, INK, true, 0, 0, 0, 6);
         ArrayList<Medicine> meds = MedicineStore.medicines(this);
@@ -671,7 +744,12 @@ public final class MainActivity extends Activity {
         LinearLayout box = new LinearLayout(this);
         box.setOrientation(LinearLayout.VERTICAL);
         box.setPadding(dp(15), dp(14), dp(15), dp(14));
-        box.setBackground(round(CARD, dp(19), Color.rgb(238, 241, 236)));
+        GradientDrawable glass = new GradientDrawable(GradientDrawable.Orientation.TL_BR,
+                new int[]{Color.WHITE, Color.rgb(248, 251, 247)});
+        glass.setCornerRadius(dp(19));
+        glass.setStroke(dp(1), Color.rgb(232, 238, 231));
+        box.setBackground(glass);
+        box.setElevation(dp(2));
         return box;
     }
 

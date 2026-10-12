@@ -155,7 +155,7 @@
     const formNote = document.querySelector('.form-preview-note span');
     if (formNote) formNote.textContent = 'ওষুধ ও মজুতের তথ্য local storage-এ থাকে। “খেয়েছি” status দিলে stock নিজে কমবে না; মজুত আলাদাভাবে নথিভুক্ত করুন।';
     const version = document.querySelector('.about-block > small');
-    if (version) version.textContent = 'Stage 4 • সংস্করণ ০.৪';
+    if (version) version.textContent = 'Stage 5 • সংস্করণ ০.৫';
 
     const view = document.getElementById('view-history');
     if (view) {
@@ -321,7 +321,7 @@
   async function getServiceWorkerRegistration() {
     if (!('serviceWorker' in navigator) || !window.isSecureContext) return null;
     if (!serviceWorkerPromise) {
-      serviceWorkerPromise = navigator.serviceWorker.register('./sw.js')
+      serviceWorkerPromise = navigator.serviceWorker.register('./sw.js?v=stage5-nav1')
         .then(() => navigator.serviceWorker.ready)
         .then(registration => { serviceRegistration = registration; return registration; })
         .catch(() => null);

@@ -1,5 +1,5 @@
-const CACHE_NAME = 'oushodhsathi-stage4-v5';
-const APP_SHELL = ['./', './index.html', './styles.css?v=stage4-5', './app.js?v=stage4-5', './reminders.js?v=stage4-5', './manifest.json?v=stage4-5', './oushodhsathi-icon.svg'];
+const CACHE_NAME = 'oushodhsathi-stage5-nav1';
+const APP_SHELL = ['./', './index.html', './styles.css?v=stage5-nav1', './app.js?v=stage5-nav1', './reminders.js?v=stage5-nav1', './manifest.json?v=stage5-nav1', './oushodhsathi-icon.svg'];
 
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(APP_SHELL)));

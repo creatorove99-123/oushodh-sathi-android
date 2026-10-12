@@ -44,3 +44,8 @@ APK পাওয়ার পর Android-এ download file খুলে install 
 - Exact permission: `SCHEDULE_EXACT_ALARM`; notifications: `POST_NOTIFICATIONS`; reboot: `RECEIVE_BOOT_COMPLETED`।
 - Alarm scheduling implementation এবং official reference: `ANDROID_ALARM_RESEARCH.md`।
 - Pure scheduling tests: `tests/ScheduleCalculatorTest.java`।
+
+
+## Stage 5 — navigation design update
+
+Native source-এ deep-forest floating pill navigation যোগ হয়েছে: **হোম · ওষুধ · + যোগ · ইতিহাস · সেটিংস**। নির্বাচিত tab-এ gold outline থাকে, central plus নতুন medicine form খোলে, এবং cards-এ নরম glass-gradient styling আছে। এই revision-এ redesign source public repo-তে যাচ্ছে; আগের APK-তে এই পরিবর্তন নেই। নতুন debug build ও বাস্তব phone QA-এর ফল আলাদা করে নথিভুক্ত হবে।

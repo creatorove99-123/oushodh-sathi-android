@@ -56,3 +56,10 @@ APK পেলে Android-এ ফাইলটি খুলে install করত�
 - `android-native/tests/ScheduleCalculatorTest.java`: pure Java time-scheduling checks।
 - `.github/workflows/build-apk.yml`: manual, one-day artifact build workflow।
 - `STAGE3_TECH_NOTES.md`, `STAGE4_TECH_NOTES.md`, `android-native/ANDROID_ALARM_RESEARCH.md`: API evidence ও সীমাবদ্ধতার নোট।
+
+
+## Stage 5 — navigation redesign (local source)
+
+PWA preview এবং Android source-এ glass-gradient surfaces ও নিচে পাঁচ-slot pill navigation যোগ হয়েছে: **হোম · ওষুধ · + যোগ · ইতিহাস · সেটিংস**। PWA-র browser-local medicine/history keys বদলানো হয়নি; preview আগের HTTPS origin-এই থাকে। Pinterest reference-এর visual language ব্যবহার করা হয়েছে, কিন্তু কোনো logo/brand mark নয়।
+
+এই revision-এ Stage 5 source update অন্তর্ভুক্ত। এই redesign-সহ আগের APK এখনো নেই; সেই APK-তে Stage 5 navigation নেই। একবারের manual debug APK build এই source update-এর পর চালানো হবে; বাস্তব Android ফোনে install/alarm QA এখনও বাকি।

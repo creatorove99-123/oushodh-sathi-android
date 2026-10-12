@@ -108,6 +108,7 @@
     window.scrollTo({top: 0, behavior: 'smooth'});
   }
   navItems.forEach(item => item.addEventListener('click', () => navigate(item.dataset.view)));
+  document.querySelector('[data-add-medicine]')?.addEventListener('click', () => openMedicineForm());
   document.querySelectorAll('[data-go]').forEach(item => item.addEventListener('click', () => navigate(item.dataset.go)));
 
   function setFormValue(name, value) {
@@ -493,6 +494,6 @@
   medicines = readSaved();
   renderAll();
   if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
-    window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js?v=stage4-5').catch(() => {}));
+    window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js?v=stage5-nav1').catch(() => {}));
   }
 })();

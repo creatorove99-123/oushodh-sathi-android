@@ -6,9 +6,9 @@
   <meta name="theme-color" content="#f4b629">
   <meta name="description" content="ঔষধসাথী — শান্তি মেডিকেয়ার দ্বারা পরিচালিত। আপনার ডিভাইসে ওষুধের তালিকা গুছিয়ে রাখুন।">
   <title>ঔষধসাথী — ওষুধের সময়ের সঙ্গী</title>
-  <link rel="manifest" href="manifest.json?v=stage4-5">
+  <link rel="manifest" href="manifest.json?v=stage5-nav1">
   <link rel="icon" type="image/svg+xml" href="oushodhsathi-icon.svg">
-  <link rel="stylesheet" href="styles.css?v=stage4-5">
+  <link rel="stylesheet" href="styles.css?v=stage5-nav1">
 </head>
 <body>
   <a class="skip-link" href="#main-content">মূল অংশে যান</a>
@@ -81,6 +81,7 @@
     <nav class="bottom-nav" aria-label="প্রধান নেভিগেশন">
       <button class="nav-item active" type="button" data-view="home" aria-current="page"><svg class="icon"><use href="#icon-home"/></svg><span>হোম</span></button>
       <button class="nav-item" type="button" data-view="medicines"><svg class="icon"><use href="#icon-pill"/></svg><span>ওষুধ</span></button>
+      <button class="nav-add" type="button" data-add-medicine aria-label="নতুন ওষুধ যোগ করুন" title="নতুন ওষুধ যোগ করুন"><span class="nav-add-orb"><svg class="icon"><use href="#icon-plus"/></svg></span><span>যোগ</span></button>
       <button class="nav-item" type="button" data-view="history"><svg class="icon"><use href="#icon-clock"/></svg><span>ইতিহাস</span></button>
       <button class="nav-item" type="button" data-view="settings"><svg class="icon"><use href="#icon-settings"/></svg><span>সেটিংস</span></button>
     </nav>
@@ -131,7 +132,7 @@
     </form>
   </dialog>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
-  <script src="reminders.js?v=stage4-5" defer></script>
-  <script src="app.js?v=stage4-5" defer></script>
+  <script src="reminders.js?v=stage5-nav1" defer></script>
+  <script src="app.js?v=stage5-nav1" defer></script>
 </body>
 </html>
