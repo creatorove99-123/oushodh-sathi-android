@@ -1,0 +1,13 @@
+<resources>
+    <color name="gold">#D5A629</color>
+    <color name="gold_dark">#8A6512</color>
+    <color name="cream">#FFF8E5</color>
+    <color name="soft_green">#EAF4EC</color>
+    <color name="green_dark">#316B4D</color>
+    <color name="ink">#27322E</color>
+    <color name="muted">#66716B</color>
+    <color name="page">#F7F8F4</color>
+    <color name="card">#FFFFFF</color>
+    <color name="red_soft">#FFF0EC</color>
+    <color name="red_dark">#9B382A</color>
+</resources>

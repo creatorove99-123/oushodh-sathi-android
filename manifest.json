@@ -1,0 +1,16 @@
+{
+  "id": "./",
+  "name": "ঔষধসাথী — শান্তি মেডিকেয়ার",
+  "short_name": "ঔষধসাথী",
+  "description": "এই ডিভাইসে ওষুধের রুটিন, ঐচ্ছিক বাংলা কণ্ঠস্বর ও হাতে লেখা মজুতের আনুমানিক হিসাব গুছিয়ে রাখুন।",
+  "lang": "bn-BD",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f7f8f5",
+  "theme_color": "#f4b629",
+  "icons": [
+    { "src": "oushodhsathi-icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}

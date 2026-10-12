@@ -1,0 +1,15 @@
+# Android/Gradle generated files
+.gradle/
+**/.gradle/
+**/build/
+local.properties
+*.apk
+*.aab
+*.jks
+*.keystore
+
+# Editor/OS files
+.DS_Store
+.idea/
+*.iml
+.vscode/

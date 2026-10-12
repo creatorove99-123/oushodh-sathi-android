@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="bn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f4b629">
+  <meta name="description" content="ঔষধসাথী — শান্তি মেডিকেয়ার দ্বারা পরিচালিত। আপনার ডিভাইসে ওষুধের তালিকা গুছিয়ে রাখুন।">
+  <title>ঔষধসাথী — ওষুধের সময়ের সঙ্গী</title>
+  <link rel="manifest" href="manifest.json?v=stage4-5">
+  <link rel="icon" type="image/svg+xml" href="oushodhsathi-icon.svg">
+  <link rel="stylesheet" href="styles.css?v=stage4-5">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">মূল অংশে যান</a>
+  <svg class="icon-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="icon-mark" viewBox="0 0 48 48"><rect x="3" y="3" width="42" height="42" rx="15" fill="currentColor"/><path d="M17.3 15.8a7.6 7.6 0 0 1 10.8 0l4.1 4.1a7.6 7.6 0 0 1-10.8 10.8l-4.1-4.1a7.6 7.6 0 0 1 0-10.8Z" fill="#fff"/><path d="m19.4 28.6 9.2-9.2" stroke="#72a46e" stroke-width="3.2" stroke-linecap="round"/><path d="M24 21v8M20 25h8" stroke="#d49a19" stroke-width="2.3" stroke-linecap="round"/></symbol>
+    <symbol id="icon-home" viewBox="0 0 24 24"><path d="m3.5 10 8.5-7 8.5 7v9.2a1.3 1.3 0 0 1-1.3 1.3h-5.1v-6.2h-4.2v6.2H4.8a1.3 1.3 0 0 1-1.3-1.3V10Z"/></symbol>
+    <symbol id="icon-pill" viewBox="0 0 24 24"><path d="M7.1 20.1a5.4 5.4 0 0 1-7.6-7.6l9.4-9.4a5.4 5.4 0 0 1 7.6 7.6l-9.4 9.4Z" transform="translate(3 0)"/><path d="m8.5 8.5 7 7"/></symbol>
+    <symbol id="icon-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></symbol>
+    <symbol id="icon-settings" viewBox="0 0 24 24"><path d="M12 8.4a3.6 3.6 0 1 0 0 7.2 3.6 3.6 0 0 0 0-7.2Z"/><path d="m19.4 13.5 1.4 1.1-1.5 2.6-1.8-.6a7.5 7.5 0 0 1-1.6.9l-.3 1.9h-3l-.4-1.9a7.5 7.5 0 0 1-1.6-.9l-1.8.6-1.5-2.6 1.4-1.1a7 7 0 0 1 0-1.9l-1.4-1.1 1.5-2.6 1.8.6a7.5 7.5 0 0 1 1.6-.9l.4-1.9h3l.3 1.9a7.5 7.5 0 0 1 1.6.9l1.8-.6 1.5 2.6-1.4 1.1a7 7 0 0 1 0 1.9Z" transform="translate(-1.5 0)"/></symbol>
+    <symbol id="icon-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="icon-bell" viewBox="0 0 24 24"><path d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9ZM10 21h4"/></symbol>
+    <symbol id="icon-check" viewBox="0 0 24 24"><path d="m5 12.5 4.2 4L19 7"/></symbol>
+    <symbol id="icon-chevron" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
+    <symbol id="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+    <symbol id="icon-leaf" viewBox="0 0 24 24"><path d="M20.5 3.5C12 3.4 5 5 5 12.2a5.3 5.3 0 0 0 5.3 5.3c7.2 0 8.8-7 8.7-14Z"/><path d="M3.5 21c2.6-5 6.2-8.4 11-10.8"/></symbol>
+    <symbol id="icon-heart" viewBox="0 0 24 24"><path d="M20.8 8.8c0 5.1-8.8 11-8.8 11s-8.8-5.9-8.8-11a4.8 4.8 0 0 1 8.8-2.6 4.8 4.8 0 0 1 8.8 2.6Z"/><path d="M12 8v7m-3.5-3.5h7"/></symbol>
+    <symbol id="icon-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5m0-8h.01"/></symbol>
+    <symbol id="icon-volume" viewBox="0 0 24 24"><path d="M4 10v4h4l5 4V6l-5 4H4Z"/><path d="M17 9a5 5 0 0 1 0 6m2.5-8.5a8.5 8.5 0 0 1 0 11"/></symbol>
+    <symbol id="icon-lock" viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3m-4 5v2"/></symbol>
+    <symbol id="icon-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+    <symbol id="icon-edit" viewBox="0 0 24 24"><path d="m14 5 5 5M4 20l4.2-.8L20 7.4 16.6 4 4.8 15.8 4 20Z"/></symbol>
+    <symbol id="icon-trash" viewBox="0 0 24 24"><path d="M4 7h16m-10 4v6m4-6v6M6 7l1 14h10l1-14M9 7V4h6v3"/></symbol>
+  </svg>
+
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#home" aria-label="ঔষধসাথী, হোম"><span class="brand-mark"><svg class="icon"><use href="#icon-mark"/></svg></span><span class="brand-copy"><strong>ঔষধসাথী</strong><small>শান্তি মেডিকেয়ার দ্বারা পরিচালিত</small></span></a>
+      <div class="topbar-actions"><span class="preview-pill"><span class="preview-dot"></span>প্রিভিউ</span><button class="icon-button install-button" type="button" aria-label="হোম স্ক্রিনে যোগ করুন" title="হোম স্ক্রিনে যোগ করুন"><svg class="icon"><use href="#icon-plus"/></svg></button></div>
+    </header>
+
+    <main id="main-content" class="main-content">
+      <section class="view active" id="view-home" aria-labelledby="home-title">
+        <div class="welcome-row"><div><p id="current-date" class="eyebrow">আজকের দিন</p><h1 id="home-title">আপনার সুস্থতার সঙ্গী</h1><p class="muted">ছোট্ট মনে করিয়ে দেওয়া, যত্নের বড় অংশ।</p></div><div class="sun-badge" aria-hidden="true"><svg class="icon"><use href="#icon-sun"/></svg></div></div>
+        <div class="demo-banner"><svg class="icon"><use href="#icon-lock"/></svg><span>আপনার ওষুধের তথ্য এই ব্রাউজারেই থাকে। এই ধাপে notification বা alarm চালু নেই।</span></div>
+        <section class="hero-card" aria-label="আপনার ওষুধের তালিকা"><div class="hero-copy"><span class="hero-kicker">আজকের যত্ন</span><h2>এক ধাপ করে<br>ভালো থাকার পথে</h2><p>আপনার দৈনন্দিন ওষুধের রুটিন সহজে গুছিয়ে রাখুন।</p></div><div class="hero-art" aria-hidden="true"><div class="hero-orbit orbit-one"></div><div class="hero-orbit orbit-two"></div><div class="hero-sun"><svg class="icon"><use href="#icon-heart"/></svg></div><span class="hero-leaf leaf-one"><svg class="icon"><use href="#icon-leaf"/></svg></span><span class="hero-leaf leaf-two"><svg class="icon"><use href="#icon-leaf"/></svg></span></div><div class="hero-footer"><span class="hero-progress"><b id="active-count">০</b>টি ওষুধের তালিকা</span><span class="preview-tag">শুধু এই ডিভাইসে</span></div></section>
+        <div class="section-heading"><div><p class="eyebrow">রুটিন</p><h2>আজকের ওষুধ</h2></div><button class="text-button" type="button" data-go="medicines">সব দেখুন <svg class="icon"><use href="#icon-chevron"/></svg></button></div>
+        <div id="today-list" class="reminder-list"></div>
+        <div id="low-stock-banner" class="low-stock-banner" aria-live="polite" hidden></div>
+        <div class="stage-note"><svg class="icon"><use href="#icon-info"/></svg><span>এটি শুধু তালিকা—এই ধাপে কোনো notification বা alarm আসবে না।</span></div>
+        <section class="care-note"><span class="note-icon"><svg class="icon"><use href="#icon-heart"/></svg></span><div><strong>আপনার যত্ন, আপনার নিয়মে</strong><p>ওষুধের মাত্রা পরিবর্তনের আগে চিকিৎসক বা ফার্মাসিস্টের সঙ্গে কথা বলুন।</p></div></section>
+        <button class="floating-add" type="button" data-open-medicine><svg class="icon"><use href="#icon-plus"/></svg><span>ওষুধ যোগ করুন</span></button>
+      </section>
+
+      <section class="view" id="view-medicines" aria-labelledby="medicines-title" hidden>
+        <div class="page-heading"><p class="eyebrow">আপনার তালিকা</p><h1 id="medicines-title">আমার ওষুধ</h1><p class="muted">ওষুধের নির্দেশ ও সময় এক জায়গায় রাখুন।</p></div>
+        <div class="local-storage-note"><svg class="icon"><use href="#icon-lock"/></svg><span>তথ্য শুধু এই browser-এর local storage-এ থাকে; কোনো সার্ভারে পাঠানো হয় না। শেয়ার করা ডিভাইসে সংবেদনশীল নোট লিখবেন না।</span></div>
+        <div class="list-filter"><span>তালিকায় <b id="medicine-count">০</b></span><span class="filter-caption">এই ডিভাইস</span></div>
+        <div id="medicine-list" class="medicine-list"></div>
+        <div id="medicine-empty" class="empty-state" hidden><span class="empty-icon"><svg class="icon"><use href="#icon-pill"/></svg></span><h2>এখনো কোনো ওষুধ যোগ হয়নি</h2><p>শুরু করতে আপনার ওষুধের নাম, নির্দেশনা ও সময় লিখুন।</p><button class="button button-primary" type="button" data-open-medicine><svg class="icon"><use href="#icon-plus"/></svg>প্রথম ওষুধ যোগ করুন</button></div>
+        <button class="button button-primary add-wide" type="button" data-open-medicine><svg class="icon"><use href="#icon-plus"/></svg>নতুন ওষুধ যোগ করুন</button>
+        <div class="stage-note"><svg class="icon"><use href="#icon-info"/></svg><span>সংরক্ষণ এই browser ও ডিভাইসের মধ্যে সীমাবদ্ধ; browser data মুছলে তালিকাও মুছে যেতে পারে।</span></div>
+        <section id="stock-summary" class="stock-summary" aria-live="polite"></section>
+      </section>
+
+      <section class="view" id="view-history" aria-labelledby="history-title" hidden>
+        <div class="page-heading"><p class="eyebrow">আপনার রেকর্ড</p><h1 id="history-title">দৈনিক ইতিহাস</h1><p class="muted">প্রতিদিনের reminder-এর অবস্থা এখানে দেখা যাবে।</p></div>
+        <div class="empty-state history-empty"><span class="empty-icon"><svg class="icon"><use href="#icon-clock"/></svg></span><h2>ইতিহাস এখনো তৈরি হয়নি</h2><p>এই ধাপে ওষুধের তথ্য রাখা যায়। Reminder-এর status ও দৈনিক history পরের ধাপে যোগ হবে। কোনো ওষুধকে স্বয়ংক্রিয়ভাবে “খেয়েছি” বলা হবে না।</p></div>
+        <div class="notice-card"><svg class="icon"><use href="#icon-info"/></svg><p>ওষুধ খাওয়ার status নিজে থেকে নথিভুক্ত হচ্ছে না। App-টি এখনো notification পাঠায় না।</p></div>
+      </section>
+
+      <section class="view" id="view-settings" aria-labelledby="settings-title" hidden>
+        <div class="page-heading"><p class="eyebrow">আপনার পছন্দ</p><h1 id="settings-title">সেটিংস</h1><p class="muted">অ্যাপের অভিজ্ঞতা আপনার সুবিধামতো সাজান।</p></div>
+        <section class="settings-group"><h2>রিমাইন্ডার ও কণ্ঠস্বর</h2><div class="setting-row"><span class="setting-icon yellow"><svg class="icon"><use href="#icon-bell"/></svg></span><div class="setting-copy"><strong>স্থানীয় নোটিফিকেশন</strong><small>চালু করতে browser permission দিন</small></div><button class="toggle" type="button" role="switch" aria-checked="false" aria-label="স্থানীয় নোটিফিকেশন" data-stage-one><span></span></button></div><div class="setting-row"><span class="setting-icon green"><svg class="icon"><use href="#icon-volume"/></svg></span><div class="setting-copy"><strong>বাংলা কণ্ঠস্বর</strong><small>চালু করতে device-এর local Bengali TTS voice লাগবে</small></div><button class="toggle" type="button" role="switch" aria-checked="false" aria-label="বাংলা কণ্ঠস্বর" data-stage-one><span></span></button></div></section>
+        <section class="family-card"><div class="family-symbol"><svg class="icon"><use href="#icon-heart"/></svg></div><div class="family-copy"><span class="coming-soon">ভবিষ্যৎ ফিচার</span><h2>পরিবারের সহায়তা</h2><p>শুধু আপনার স্পষ্ট সম্মতিতে—নিরাপদ সংযোগ যাচাই না হওয়া পর্যন্ত এই ফিচার বন্ধ থাকবে।</p></div><button class="family-cta" type="button" disabled>এখনো চালু নয়</button></section>
+        <section class="settings-group"><h2>গোপনীয়তা ও তথ্য</h2><div class="setting-row static-row"><span class="setting-icon neutral"><svg class="icon"><use href="#icon-lock"/></svg></span><div class="setting-copy"><strong>তথ্য আপনার ডিভাইসে</strong><small>ওষুধের নাম, নির্দেশ ও সময় এই browser-এর local storage-এ রাখা হয়। কোনো সার্ভারে upload হয় না; এটি encrypted নয় এবং browser data মুছলে হারাতে পারে।</small></div></div><button class="setting-link" id="export-backup" type="button"><span class="setting-icon neutral"><svg class="icon"><use href="#icon-info"/></svg></span><span class="setting-copy"><strong>ফোনে backup export</strong><small>ওষুধ, history ও মজুত JSON file-এ download হবে; native Android app-এ আনতে ব্যবহার করুন। ফাইলটি অন্যের সাথে share করবেন না।</small></span><svg class="icon link-chevron"><use href="#icon-chevron"/></svg></button><button class="setting-link" type="button" data-stage-one><span class="setting-icon neutral"><svg class="icon"><use href="#icon-info"/></svg></span><span class="setting-copy"><strong>স্বাস্থ্য-সুরক্ষা নোট</strong><small>রিমাইন্ডার চিকিৎসকের পরামর্শের বিকল্প নয়</small></span><svg class="icon link-chevron"><use href="#icon-chevron"/></svg></button></section>
+        <div class="about-block"><span class="brand-mark small-mark"><svg class="icon"><use href="#icon-mark"/></svg></span><strong>ঔষধসাথী</strong><p>শান্তি মেডিকেয়ার দ্বারা পরিচালিত</p><small>Stage 2 • সংস্করণ ০.২</small></div>
+      </section>
+    </main>
+
+    <nav class="bottom-nav" aria-label="প্রধান নেভিগেশন">
+      <button class="nav-item active" type="button" data-view="home" aria-current="page"><svg class="icon"><use href="#icon-home"/></svg><span>হোম</span></button>
+      <button class="nav-item" type="button" data-view="medicines"><svg class="icon"><use href="#icon-pill"/></svg><span>ওষুধ</span></button>
+      <button class="nav-item" type="button" data-view="history"><svg class="icon"><use href="#icon-clock"/></svg><span>ইতিহাস</span></button>
+      <button class="nav-item" type="button" data-view="settings"><svg class="icon"><use href="#icon-settings"/></svg><span>সেটিংস</span></button>
+    </nav>
+  </div>
+
+  <dialog class="medicine-dialog" id="medicine-dialog" aria-labelledby="dialog-title">
+    <div class="dialog-top"><div><span class="eyebrow" id="dialog-kicker">নতুন তালিকা</span><h2 id="dialog-title">ওষুধ যোগ করুন</h2></div><button class="icon-button" type="button" id="close-medicine-dialog" aria-label="বন্ধ করুন"><svg class="icon"><use href="#icon-close"/></svg></button></div>
+    <form id="medicine-form" class="medicine-form" autocomplete="off">
+      <input type="hidden" name="id">
+      <label>ওষুধের নাম <input name="name" type="text" maxlength="100" placeholder="যেমন: ভিটামিন ট্যাবলেট" required></label>
+      <label>মাত্রা / নির্দেশনা <input name="dose" type="text" maxlength="100" placeholder="যেমন: ১টি ট্যাবলেট" required></label>
+      <label>কখন খাবেন <input name="instruction" type="text" maxlength="160" placeholder="যেমন: খাবারের পরে"></label>
+      <label>কতবার খাবেন <select name="frequency" id="frequency"><option value="daily">প্রতিদিন</option><option value="specific-days">সপ্তাহের নির্দিষ্ট দিন</option><option value="as-needed">প্রয়োজন অনুযায়ী (নির্দিষ্ট সময় নেই)</option></select></label>
+      <fieldset id="weekday-picker" class="weekday-picker" hidden><legend>কোন কোন দিন <span class="required-mark">* অন্তত একটি</span></legend><div class="weekday-options"><label><input type="checkbox" name="days" value="0">রবি</label><label><input type="checkbox" name="days" value="1">সোম</label><label><input type="checkbox" name="days" value="2">মঙ্গল</label><label><input type="checkbox" name="days" value="3">বুধ</label><label><input type="checkbox" name="days" value="4">বৃহস্পতি</label><label><input type="checkbox" name="days" value="5">শুক্র</label><label><input type="checkbox" name="days" value="6">শনি</label></div></fieldset>
+      <section id="times-section" class="times-section"><div class="field-label-row"><span class="field-label">সময় <span class="required-mark">* অন্তত একটি</span></span><button type="button" id="add-time" class="small-link"><svg class="icon"><use href="#icon-plus"/></svg>আরও সময়</button></div><div id="time-list" class="time-list"></div><small class="field-help">দিনে একাধিক সময় লাগলে “আরও সময়” চাপুন।</small></section>
+      <div class="field-grid"><label>শুরুর তারিখ <input name="start" type="date" required></label><label>শেষের তারিখ <input name="end" type="date"></label></div>
+      <label>নোট (ঐচ্ছিক) <textarea name="notes" rows="2" maxlength="300" placeholder="নিজের জন্য ছোট নোট"></textarea></label>
+      <fieldset class="stock-form-section">
+        <legend>ওষুধের মজুত (ঐচ্ছিক)</legend>
+        <label class="stock-track-toggle" for="stock-enabled"><input id="stock-enabled" name="stockEnabled" type="checkbox"><span><strong>এই ওষুধের মজুতের হিসাব রাখব</strong><small>মজুত নিজে লিখে আপডেট করবেন।</small></span></label>
+        <div id="stock-fields" class="stock-fields" hidden>
+          <div class="field-grid"><label>বর্তমানে বাকি পরিমাণ <input name="stockRemaining" type="number" min="0" step="any" placeholder="যেমন: ১২"></label><label>একক <input name="stockUnit" type="text" maxlength="16" value="টি" placeholder="যেমন: ট্যাবলেট"></label></div>
+          <label>কম মজুতের সীমা <input name="stockLowAt" type="number" min="0" step="any" value="5"></label>
+          <small class="field-help">এটি আপনার হাতে লেখা আনুমানিক হিসাব, যাচাইকৃত inventory নয়। “খেয়েছি” status দিলে মজুত নিজে থেকে কমবে না।</small>
+        </div>
+      </fieldset>
+      <div class="form-preview-note"><svg class="icon"><use href="#icon-lock"/></svg><span>সংরক্ষণ এই browser-এর local storage-এ হবে—কোনো সার্ভারে নয়। এটি alarm চালু করে না।</span></div>
+      <p id="form-error" class="form-error" role="alert" hidden></p>
+      <div class="dialog-actions"><button class="button button-outline" type="button" id="cancel-medicine">বাতিল</button><button class="button button-primary" type="submit" id="save-medicine">সংরক্ষণ করুন</button></div>
+    </form>
+  </dialog>
+
+  <dialog class="confirm-dialog" id="delete-dialog" aria-labelledby="delete-title">
+    <div class="dialog-top"><div><span class="eyebrow">নিশ্চিত করুন</span><h2 id="delete-title">ওষুধটি মুছবেন?</h2></div><button class="icon-button" type="button" id="close-delete-dialog" aria-label="বন্ধ করুন"><svg class="icon"><use href="#icon-close"/></svg></button></div>
+    <p id="delete-copy" class="delete-copy">এই ওষুধটি এই ডিভাইসের তালিকা থেকে মুছে যাবে।</p>
+    <div class="dialog-actions"><button class="button button-outline" type="button" id="cancel-delete">বাতিল</button><button class="button button-danger" type="button" id="confirm-delete"><svg class="icon"><use href="#icon-trash"/></svg>মুছে ফেলুন</button></div>
+  </dialog>
+  <dialog class="medicine-dialog" id="stock-dialog" aria-labelledby="stock-dialog-title">
+    <div class="dialog-top"><div><span class="eyebrow">মজুতের হিসাব</span><h2 id="stock-dialog-title">পরিমাণ আপডেট</h2></div><button class="icon-button" type="button" id="close-stock-dialog" aria-label="বন্ধ করুন"><svg class="icon"><use href="#icon-close"/></svg></button></div>
+    <form id="stock-form" class="medicine-form stock-adjust-form" autocomplete="off">
+      <p id="stock-copy" class="delete-copy"></p>
+      <label>কী নথিভুক্ত করবেন <select name="mode" id="stock-mode"><option value="used">ব্যবহৃত পরিমাণ (মজুত থেকে কমবে)</option><option value="set">বর্তমানে বাকি পরিমাণ</option></select></label>
+      <label id="stock-amount-label">ব্যবহৃত পরিমাণ <input name="amount" type="number" min="0" step="any" required></label>
+      <small id="stock-mode-help" class="field-help">পরিমাণটি বর্তমান আনুমানিক মজুত থেকে বাদ যাবে।</small>
+      <div id="stock-current" class="stock-current" role="status"></div>
+      <p id="stock-error" class="form-error" role="alert" hidden></p>
+      <div class="dialog-actions"><button class="button button-outline" type="button" id="cancel-stock">বাতিল</button><button class="button button-primary" type="submit">সংরক্ষণ</button></div>
+    </form>
+  </dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="reminders.js?v=stage4-5" defer></script>
+  <script src="app.js?v=stage4-5" defer></script>
+</body>
+</html>
