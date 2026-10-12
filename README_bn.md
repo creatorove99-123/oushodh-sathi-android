@@ -6,8 +6,8 @@
 
 - আগের PWA preview-র same-origin link chat-এ দেওয়া হয়েছে; public source README-তে temporary preview URL রাখা হয়নি। আগের PWA-তে data থাকলে একই link, HTTPS origin ও browser profile ব্যবহার করুন; browser/site data মুছবেন না।
 - **PWA নিজে বন্ধ থাকলে নির্ভরযোগ্য alarm দিতে পারে না।** তাই `android-native/`-এ Android `AlarmManager`-ভিত্তিক নেটিভ app source যোগ করা হয়েছে। স্বাভাবিকভাবে app বন্ধ/Recent apps থেকে সরানো থাকলেও Android-এর scheduled alarm notification দেখানোর জন্য এটি তৈরি।
-- **Gradle দিয়ে APK এখনও build বা বাস্তব Android ফোনে পরীক্ষা করা হয়নি।** এই computer-এ Android SDK/Gradle নেই; তবে সব native Java source Android 15/API 35 framework types-এর বিরুদ্ধে type-compile হয়েছে এবং সময়সূচির ৮টি regression check পাস করেছে। Gradle packaging, install এবং বন্ধ-app/reboot QA বাকি।
-- কোনো subscription, card, paid API, cloud backend বা patient-data upload দরকার নেই। Free cloud build-এর সম্ভাব্য পথ হলো GitHub-এ public source repository-তে একবার Actions build চালানো; public repository-তে source এবং workflow artifact-ও অন্যরা দেখতে/নামাতে পারার সম্ভাবনা আছে। Private Actions quota-এর অবশিষ্ট অংশ এখানে যাচাই করা যায়নি, তাই **public publish ও build চালু করার আগে মালিকের স্পষ্ট অনুমতি দরকার**।
+- **GitHub Actions-এ debug APK build সফল হয়েছে** (2026-10-12; [public build run](https://github.com/creatorove99-123/oushodh-sathi-android/actions/runs/38257882948)) এবং APK ডাউনলোড ও ZIP-integrity যাচাই হয়েছে। APK এই handoff-এ দেওয়া হয়েছে। বাস্তব Android ফোনে install, notification delivery, app-বন্ধ/Doze/reboot পরীক্ষা এখনও করা হয়নি; এটি debug build, Play Store/production-signed নয়।
+- [Public source repository](https://github.com/creatorove99-123/oushodh-sathi-android) অনুমতি নিয়ে তৈরি হয়েছে; source ও একদিনের workflow artifact public read-access-এ দেখা/নামানো যায়। Public GitHub runner-এ একবার free build চলেছে—subscription/card, paid API, patient-data upload বা private Actions quota ব্যবহার করা হয়নি। Repo-তে real patient record, backup, credential বা temporary preview URL নেই।
 
 ## PWA থেকে native app-এ data নেওয়া
 
@@ -37,7 +37,7 @@ Backup-এ ব্যক্তিগত স্বাস্থ্যতথ্য �
 
 ## বিনামূল্যের build ও install সীমা
 
-Native source `android-native/`-এ; manual build workflow `.github/workflows/build-apk.yml`-এ। এটি debug APK তৈরি করে; Play Store listing বা production signing নয়। GitHub Actions artifact একদিন রাখা হয়। Public repository-তে source এবং APK artifact প্রকাশ্য হতে পারে—এখানে কোনো patient record/secret রাখা হবে না। Free build শুরু করার আগে public publish-এর অনুমতি নেওয়া হবে; কোনো subscription/card ব্যবহার করা হবে না।
+Native source `android-native/`-এ; manual build workflow `.github/workflows/build-apk.yml`-এ। [প্রথম সফল build run](https://github.com/creatorove99-123/oushodh-sathi-android/actions/runs/38257882948) debug APK তৈরি করেছে। GitHub Actions artifact একদিন রাখা হয়, তাই artifact মেয়াদ শেষ হলেও এই handoff-এ দেওয়া APK copy থাকবে। এটি Play Store listing বা production signing নয়।
 
 APK পেলে Android-এ ফাইলটি খুলে install করতে হতে পারে এবং browser/Files app-এর জন্য “Install unknown apps” অনুমতি দিতে হতে পারে। এটি Play Store থেকে আসবে না; কেবল trusted source থেকে নেওয়া APK install করুন।
 
@@ -46,8 +46,8 @@ APK পেলে Android-এ ফাইলটি খুলে install করত�
 - Pure Java scheduler পরীক্ষা: ৮টি check পাস—daily same-day/next-day, weekly day, future start, end-date-এর শেষ দিন অন্তর্ভুক্তি ও পরের দিন বন্ধ, as-needed এবং weekday selection।
 - সব native Java source Android 15/API 35 framework types-এর বিরুদ্ধে compile/type-check পাস করেছে; এটি Gradle resource packaging বা বাস্তব Android install test নয়।
 - PWA medicine storage key ও history key যাচাই করে matching JSON export/import schema তৈরি হয়েছে। Existing PWA localStorage key বদলানো হয়নি।
-- পূর্ণ Android compilation, APK install, notifications permission, exact alarm delivery, screen-off/closed-app/Doze, reboot, force-stop এবং বাস্তব phone/OEM test **এখনও হয়নি**।
-- Public GitHub repository-তে publish/build করার আগে মালিকের স্পষ্ট সম্মতি প্রয়োজন।
+- GitHub Actions Gradle build সফল; downloaded APK-তে binary manifest, DEX ও resources উপস্থিত এবং ZIP integrity pass করেছে। APK install, notification permission, exact-alarm delivery, screen-off/closed-app/Doze, reboot, force-stop এবং বাস্তব phone/OEM test **এখনও হয়নি**।
+- Public repository ও Actions artifact-এ source প্রকাশিত; কোনো রোগীর তথ্য বা secret অন্তর্ভুক্ত হয়নি।
 
 ## Source layout
 
