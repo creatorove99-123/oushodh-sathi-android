@@ -14,7 +14,7 @@
 - Native APK Android notification-channel sound ব্যবহার করে; স্বয়ংক্রিয় Bengali TTS এখনো নেই। Browser PWA-র optional Bengali voice আলাদা ও best-effort।
 - Android manifest-এ `INTERNET` permission নেই।
 
-**Gradle APK এখনও তৈরি/ইনস্টল/বাস্তব ফোনে QA করা হয়নি।** এই workspace-এ Android SDK/Gradle নেই। Pure Java alarm-date logic-এর ৮টি check pass করেছে এবং native Java source Android 15/API 35 framework types-এর বিরুদ্ধে compile/type-check হয়েছে; তবে এটি Gradle resource packaging, install বা বাস্তব alarm test-এর বিকল্প নয়।
+**GitHub Actions-এ Gradle debug APK build সফল হয়েছে** (2026-10-12, [build run](https://github.com/creatorove99-123/oushodh-sathi-android/actions/runs/38257882948)). APK archive integrity, binary manifest, DEX ও resource entries যাচাই হয়েছে। বাস্তব Android ফোনে install, notification permission, closed-app, Doze, reboot বা OEM alarm delivery এখনও QA করা হয়নি; এটি Play Store/production-signed release নয়।
 
 ## Android permission setup
 
@@ -30,7 +30,7 @@
 
 ## শূন্য-খরচের APK build
 
-Root project-এ `.github/workflows/build-apk.yml` manual **Build OushodhSathi APK** workflow আছে। এটি debug APK build করে এবং artifact একদিন রাখে; Play Store production signing নয়। Private GitHub Actions quota যাচাই করা যায়নি। GitHub-hosted public repository build ব্যবহার করলে source এবং workflow artifact অন্যরাও দেখতে/নামাতে পারে। তাই public repo তৈরি ও build চালুর আগে প্রকল্প-মালিকের স্পষ্ট সম্মতি আবশ্যক। কোনো paid service, subscription বা credit card দরকার হওয়ার কথা নয়; over-quota private build ব্যবহার করা হবে না।
+Root project-এ `.github/workflows/build-apk.yml` manual **Build OushodhSathi APK** workflow আছে। [একবারের public build সফল](https://github.com/creatorove99-123/oushodh-sathi-android/actions/runs/38257882948); artifact একদিন রাখা হয়। Public repo source ও artifact যে কেউ read access-সহ দেখতে/নামাতে পারে—এ কারণে project-এ patient record/secret নেই। Private GitHub Actions quota যাচাই করা যায়নি; সেটি ব্যবহার করা হয়নি। কোনো paid service, subscription বা credit card দরকার হয়নি।
 
 APK পাওয়ার পর Android-এ download file খুলে install করুন; প্রয়োজনে browser/Files app-এর “Install unknown apps” অনুমতি দিন। Unknown-source APK ঝুঁকিপূর্ণ হতে পারে—শুধু বিশ্বাসযোগ্য build artifact install করুন।
 
